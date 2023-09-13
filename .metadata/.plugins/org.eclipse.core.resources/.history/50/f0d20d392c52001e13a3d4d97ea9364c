@@ -1,0 +1,8 @@
+@charset "ISO-8859-1";
+
+.backImg
+{
+	background-color:green;
+	width: 50%;
+	height: 10vh;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="css/home.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+		
+		<div id="maindiv">
+			<header>
+			
+			<div id="logo"></div>
+			<div id="title"></div>
+			
+			</header>
+			<div id="body"></div>
+			<footer></footer>
+		</div>
+		
+		
+</body>
+</html>
