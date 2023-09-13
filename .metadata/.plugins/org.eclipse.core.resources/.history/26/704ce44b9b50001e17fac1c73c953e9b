@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h1>Registration Form</h1>
+			<form action="">
+				
+				<label>Username</label>
+				<input type="text">  <br><br>
+				
+				<label>Email</label>
+				<input type="text">  <br><br>
+				
+				<label>Password</label>
+				<input type="password">  <br><br>
+		
+				<label>Gender</label>
+				<input type="radio" name="gender" checked="checked">Male
+				<input type="radio" name="gender">FeMale
+				 <br><br>
+				 
+				 <label>Languages</label>
+				<input type="checkbox">Gujarati
+				<input type="checkbox">	Hindi
+				<input type="checkbox">	English  <br><br>
+				
+				<label>Country</label>
+				<select>
+				<option>India</option>
+				<option>USA</option>
+				<option>UK</option>
+				<option>Canada</option>
+				</select>
+					
+				<input type="submit">	
+			
+			</form>
+	
+	
+</body>
+</html>
