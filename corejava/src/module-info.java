@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author CHINTAN
- *
- */
-module corejava {
-}
