@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/display")
 public class DisplayServlet extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
 		try {

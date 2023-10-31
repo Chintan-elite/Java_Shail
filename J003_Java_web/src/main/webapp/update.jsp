@@ -25,8 +25,9 @@
 				<h1 class="text-danger">Update From</h1>
 				
 				
-				<form action="reg" method="post">
+				<form action="update" method="post">
 				<span class="text-success">${msg}</span>
+				<input type="hidden" name="id" value="<%=u.getId()%>">
 				<div class="form-group">
 				<label>Username</label>
 				<input type="text" name="uname" class="form-control" value="<%=u.getName()%>">
