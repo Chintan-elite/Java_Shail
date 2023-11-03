@@ -18,9 +18,8 @@
 				
 				<h1 class="text-danger">Registration From</h1>
 				
-				
 				<form action="reg" method="post">
-				
+				<span class="text-success">${msg}</span>
 				<div class="form-group">
 				<label>Username</label>
 				<input type="text" name="uname" class="form-control">
@@ -39,7 +38,8 @@
 				<input type="submit" class="btn btn-success">
 				<input type="reset" class="btn btn-primary">
 				</form>
-				
+				<a href="login.jsp">Already registerd? login here</a>
+				</div>
 				</div>
 				</div>
 </body>

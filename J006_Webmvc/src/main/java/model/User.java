@@ -1,11 +1,11 @@
 package model;
 
-public class Emp {
+public class User {
 		
-		private int id;
-		private String uname;
-		private String email;
-		private String pass;
+		int id;
+		String uname;
+		String email;
+		String pass;
 		
 		public int getId() {
 			return id;
@@ -31,7 +31,6 @@ public class Emp {
 		public void setPass(String pass) {
 			this.pass = pass;
 		}
-		
 		
 		
 }
