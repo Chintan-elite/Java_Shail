@@ -3,7 +3,9 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.User;
 
@@ -41,14 +43,78 @@ public class UserDao {
 		return i;
 	}
 	
-	public void viewUser()
+	
+	public boolean login(User user)
 	{
+		boolean b = false;
+		try {
+			PreparedStatement ps = cn.prepareStatement("select * from reg where email=? and pass=?");
+			ps.setString(1, user.getEmail());
+			ps.setString(2, user.getPass());
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next())
+			{
+				b = true;
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return b;
 		
 	}
 	
-	public void deleteUser()
+	
+	public ArrayList<User> viewUser()
 	{
 		
+		ArrayList<User> al = new ArrayList<>();
+		
+		try {
+			PreparedStatement ps = cn.prepareStatement("select * from reg");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				User u = new User();
+				u.setId(rs.getInt(1));
+				u.setUname(rs.getString(2));
+				u.setEmail(rs.getString(3));
+				u.setPass(rs.getString(4));
+			
+				al.add(u);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return al;
+		
+	}
+	
+	public int deleteUser(int did)
+	{
+		int i=0;
+		try {
+			PreparedStatement ps = cn.prepareStatement("delete from reg where id=?");
+			ps.setInt(1, did);
+			
+			 i = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;	
 	}
 	
 	public void updateUser()
