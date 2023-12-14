@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
-
+		<h1><a href="display">View all user</a></h1>
 </body>
 </html>

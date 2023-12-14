@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.User;
 
@@ -71,6 +72,104 @@ public class UserDao {
 		}
 		
 		return b;
+	}
+
+	public ArrayList<User> viewUser() {
+		
+		ArrayList<User> al = new ArrayList<>();
+		
+		try {
+			PreparedStatement ps = cn.prepareStatement("select * from user");
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				User u = new User();
+				u.setId(rs.getInt(1));
+				u.setName(rs.getString(2));
+				u.setEmail(rs.getString(3));
+				u.setPass(rs.getString(4));
+				
+				al.add(u);
+			}
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return al;
+	}
+
+	public int deleteUser(int uid) {
+		int i =0;
+		
+		try {
+			PreparedStatement ps = cn.prepareStatement("delete from user where id=?");
+			ps.setInt(1, uid);
+			
+			i = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return i;
+	}
+
+	public User getUserById(int uid) {
+		
+		User u = new User();
+		
+		try {
+			PreparedStatement ps  = cn.prepareStatement("select * from user where id=?");
+			ps.setInt(1, uid);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next())
+			{
+				u.setId(rs.getInt(1));
+				u.setName(rs.getString(2));
+				u.setEmail(rs.getString(3));
+				u.setPass(rs.getString(4));
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return u;
+	}
+
+	public int updateUser(User user) {
+		int i=0;
+		
+		try {
+			PreparedStatement ps  =cn.prepareStatement("update user set name=?,email=?,pass=? where id=?");
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getEmail());
+			ps.setString(3, user.getPass());
+			ps.setInt(4, user.getId());
+		
+		
+			i = ps.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return i;
 	}
 	
 	
