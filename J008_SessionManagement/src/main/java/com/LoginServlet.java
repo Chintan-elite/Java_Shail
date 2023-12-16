@@ -1,52 +1,34 @@
-package controller;
+package com;
 
 import java.io.IOException;
 
-import dao.UserDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.User;
 
 @WebServlet("/login")
-public class LoginContoller extends HttpServlet {
-
+public class LoginServlet  extends HttpServlet{
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String email = req.getParameter("email");
+		String uname =req.getParameter("uname");
 		String pass = req.getParameter("pass");
 		
-		
-		User u = new User();
-		u.setEmail(email);
-		u.setPass(pass);
-		
-		
-		UserDao dao = new UserDao();
-		boolean b = dao.loginCheck(u);
-		
-		
-		
-		if(b)
+		if(uname.equals("admin") && pass.equals("admin"))
 		{
 			HttpSession session = req.getSession();
-			session.setAttribute("uname", email);
+			session.setAttribute("uname", uname);
 			req.getRequestDispatcher("home.jsp").forward(req, resp);
-			
 		}
 		else
 		{
-			req.setAttribute("err", "invalid credentials !!!");
+			req.setAttribute("err", "Invalid Credentials");
 			req.getRequestDispatcher("login.jsp").forward(req, resp);
-			
 		}
-		
-		
-		
 		
 		
 	}
