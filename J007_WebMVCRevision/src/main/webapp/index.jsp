@@ -23,6 +23,7 @@
 				<div class="form-group">
 				<label>Username</label>
 				<input type="text" name="uname" class="form-control">
+				<span class="text-danger">${unameErr}</span>
 				</div>
 				
 				<div class="form-group">

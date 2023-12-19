@@ -134,7 +134,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="J003_Java_web" path="/J003_Java_web" reloadable="true" source="org.eclipse.jst.jee.server:J003_Java_web"/><Context docBase="J006_Webmvc" path="/J006_Webmvc" reloadable="true" source="org.eclipse.jst.jee.server:J006_Webmvc"/><Context docBase="J007_WebMVCRevision" path="/J007_WebMVCRevision" reloadable="true" source="org.eclipse.jst.jee.server:J007_WebMVCRevision"/><Context docBase="J008_SessionManagement" path="/J008_SessionManagement" reloadable="true" source="org.eclipse.jst.jee.server:J008_SessionManagement"/></Host>
+      <Context docBase="J003_Java_web" path="/J003_Java_web" reloadable="true" source="org.eclipse.jst.jee.server:J003_Java_web"/><Context docBase="J006_Webmvc" path="/J006_Webmvc" reloadable="true" source="org.eclipse.jst.jee.server:J006_Webmvc"/><Context docBase="J007_WebMVCRevision" path="/J007_WebMVCRevision" reloadable="true" source="org.eclipse.jst.jee.server:J007_WebMVCRevision"/><Context docBase="J008_SessionManagement" path="/J008_SessionManagement" reloadable="true" source="org.eclipse.jst.jee.server:J008_SessionManagement"/><Context docBase="J009_FilterLearning" path="/J009_FilterLearning" reloadable="true" source="org.eclipse.jst.jee.server:J009_FilterLearning"/></Host>
     </Engine>
   </Service>
 </Server>
