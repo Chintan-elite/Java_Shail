@@ -15,8 +15,62 @@
     
     $(document).ready(function(){
 		
+    	$("#update").hide()
     	loadData();
 	})	
+	
+	
+	function adddata()
+    {
+		var fname = $("#fname").val()
+		var lname = $("#lname").val()
+		var email = $("#email").val()
+		
+		$.get("addStudent",{fname,lname,email},function(rt){
+			alert(rt)
+			loadData()
+		})
+		
+	}
+    
+    function updatedata()
+    {
+		var id = $("#id").val()
+		var fname = $("#fname").val()
+		var lname = $("#lname").val()
+		var email = $("#email").val()
+		
+		$.post("addStudent",{id,fname,lname,email},function(rt){
+			alert(rt)
+			loadData()
+		})
+		
+	}
+    
+    function deleteData(uid)
+    {
+		$.get("update",{uid,action:"delete"},function(rt){
+			alert(rt)
+			loadData()
+		})	
+	}
+    
+    function editData(uid)
+    {
+    	$.get("update",{uid,action:"edit"},function(rt){
+
+    		const data = JSON.parse(rt)
+    		$("#id").val(data.id)
+    		$("#fname").val(data.firstName)
+    		 $("#lname").val(data.lastName)
+    		$("#email").val(data.email)
+    		
+    		$("#update").show()
+    		$("#add").hide()
+    		
+		})	
+    }
+    
     
 	function loadData()
     {
@@ -27,7 +81,24 @@
     		var row;
 			for(var i=0;i<data.length;i++)
 			{
-					row=row+"<tr><td>"+data[i].id+"</td><td>"+data[i].firstName+"</td><td>"+data[i].lastName+"</td><td>"+data[i].email+"</td><td><button class='btn btn-danger'>Delete</button></td><td><button class='btn btn-primary'>Edit</button></td></tr>"
+					row=row+"<tr><td>"+data[i].id+"</td><td>"+data[i].firstName+"</td><td>"+data[i].lastName+"</td><td>"+data[i].email+"</td><td><button class='btn btn-danger' onclick='deleteData("+data[i].id+")'>Delete</button></td><td><button class='btn btn-primary' onclick='editData("+data[i].id+")'>Edit</button></td></tr>"
+			}
+			$("#tdata").html(row)
+		})	
+    }
+	
+	function searchData()
+    {
+		var cdata =$("#search").val();
+		
+    	$.get("search",{cdata},function(rt){
+			
+    		
+    		const data = JSON.parse(rt)
+    		var row;
+			for(var i=0;i<data.length;i++)
+			{
+					row=row+"<tr><td>"+data[i].id+"</td><td>"+data[i].firstName+"</td><td>"+data[i].lastName+"</td><td>"+data[i].email+"</td><td><button class='btn btn-danger' onclick='deleteData("+data[i].id+")'>Delete</button></td><td><button class='btn btn-primary' onclick='editData("+data[i].id+")'>Edit</button></td></tr>"
 			}
 			$("#tdata").html(row)
 		})	
@@ -47,6 +118,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <form action="">
+                    	<input type="hidden" id="id">
                         <h2 align="center">Add Student</h2>
                         <div class="form-group">
                             <label for="">FirstName</label>
@@ -60,14 +132,16 @@
                             <label for="">Email</label>
                             <input type="text" name="email" id="email" class="form-control">
                         </div>
-                        <button class="btn btn-success">Add</button>
+                        <button class="btn btn-success" onclick="adddata()" id="add">Add</button>
+                      	 <button class="btn btn-success" onclick="updatedata()" id="update">Update</button>
+                      
                         <button class="btn btn-primary">Reset</button>
                     </form>
                 </div>
                 <div class="col-md-8">
                     <h2 align="center">Student Details</h2>
                     <div class="form-group">
-                    <input type="text" name="search" id="search" class="form-control" placeholder="search student">
+                    <input type="text" name="search" id="search" class="form-control" onkeyup="searchData()" placeholder="search student">
                 </div>
                     <table class="table">
                         <tr>
