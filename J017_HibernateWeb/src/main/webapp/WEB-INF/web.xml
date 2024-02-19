@@ -4,4 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+  <servlet-name>reg1</servlet-name>
+  <servlet-class>controller.RegistrationController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>reg1</servlet-name>
+  <url-pattern>/reg</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

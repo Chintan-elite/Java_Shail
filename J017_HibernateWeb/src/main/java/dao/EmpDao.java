@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -24,5 +26,12 @@ public class EmpDao {
 		Transaction tx = s.beginTransaction();
 		s.saveOrUpdate(e);
 		tx.commit();
+	}
+
+	public ArrayList<Emp> getAllEmp() {
+		
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		return (ArrayList<Emp>) s.createQuery("from Emp").list();
 	}
 }

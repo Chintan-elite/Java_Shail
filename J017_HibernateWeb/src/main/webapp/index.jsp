@@ -43,7 +43,7 @@
 				<input type="submit" class="btn btn-success">
 				<input type="reset" class="btn btn-primary">
 				</form>
-				<a href="">view Emp</a>
+				<a href="display">view Emp</a>
 				</div>
 				</div>
 				</div>
